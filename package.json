@@ -1,0 +1,61 @@
+{
+  "name": "password-leak-monitor",
+  "version": "1.0.0",
+  "description": "Chrome/Firefox addon that automatically monitors for passwords that may be in data breaches",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "compression-webpack-plugin": "^1.0.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.5",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.6.0",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^6.0.6",
+    "standard": "^10.0.3",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.8.1"
+  },
+  "scripts": {
+    "prebuild": "rimraf ./extension/dist/",
+    "start": "webpack --config webpack.config.js -w -d",
+    "build": "webpack --config webpack.production.config.js -p && web-ext build --overwrite-dest --source-dir ./extension",
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mathiscode/password-leak-monitor"
+  },
+  "keywords": [
+    "password",
+    "leak",
+    "breach",
+    "security",
+    "browser",
+    "addon",
+    "firefox",
+    "chrome"
+  ],
+  "bugs": {
+    "url": "https://github.com/mathiscode/password-leak-monitor/issues"
+  },
+  "homepage": "https://github.com/mathiscode/password-leak-monitor#README",
+  "standard": {
+    "globals": [
+      "browser",
+      "chrome",
+      "window"
+    ],
+    "ignore": [
+      "extension/dist/",
+      "node_modules/"
+    ]
+  },
+  "dependencies": {}
+}
