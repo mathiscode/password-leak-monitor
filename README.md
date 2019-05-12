@@ -1,6 +1,6 @@
 # Password Leak Monitor
 
-![Mozilla Add-on](https://img.shields.io/amo/dw/password-leak-monitor.svg)
+[![Mozilla Add-on](https://img.shields.io/amo/dw/password-leak-monitor.svg)](https://addons.mozilla.org/en-US/firefox/addon/password-leak-monitor/)
 
 A browser addon that automatically monitors all passwords used and alerts you if it has been included in any data breaches.
 
