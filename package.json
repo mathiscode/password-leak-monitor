@@ -1,6 +1,6 @@
 {
   "name": "password-leak-monitor",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Chrome/Firefox addon that automatically monitors for passwords that may be in data breaches",
   "license": "MIT",
   "devDependencies": {
