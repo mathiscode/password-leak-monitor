@@ -1,7 +1,15 @@
-/* global TextEncoder, alert, fetch */
+/* global TextEncoder, fetch */
+
+import toastr from 'toastr'
 
 class Main {
   constructor () {
+    const toastrCSS = document.createElement('link')
+    toastrCSS.href = 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css'
+    toastrCSS.type = 'text/css'
+    toastrCSS.rel = 'stylesheet'
+    document.getElementsByTagName('head')[0].appendChild(toastrCSS)
+
     window.addEventListener('load', this.listen)
   }
 
@@ -38,7 +46,8 @@ class Main {
               if (found) {
                 e.target.style.backgroundColor = '#c00'
                 e.target.setAttribute('title', 'Password has been detected in data breaches!')
-                alert('WARNING: This password has been detected in leaked databases. It is recommended to change it immediately!')
+                toastr.options.timeOut = 10000
+                toastr.error('<br><p>This password has been detected in leaked databases.</p><br><p>It is recommended to change it immediately!</p>', 'INSECURE PASSWORD')
               } else {
                 e.target.style.backgroundColor = ''
                 e.target.removeAttribute('title')
