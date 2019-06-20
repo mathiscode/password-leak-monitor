@@ -1,36 +1,20 @@
 {
   "name": "password-leak-monitor",
-  "version": "1.1.0",
-  "description": "Chrome/Firefox addon that automatically monitors for passwords that may be in data breaches",
-  "license": "MIT",
-  "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "compression-webpack-plugin": "^1.0.1",
-    "css-loader": "^0.28.7",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.5",
-    "html-loader": "^0.5.1",
-    "html-webpack-plugin": "^2.30.1",
-    "node-sass": "^4.6.0",
-    "rimraf": "^2.6.2",
-    "sass-loader": "^6.0.6",
-    "standard": "^10.0.3",
-    "style-loader": "^0.19.0",
-    "url-loader": "^0.6.2",
-    "webpack": "^3.8.1"
-  },
+  "version": "2.0.0",
+  "description": "Browser extension that automatically monitors for passwords that are compromised",
   "scripts": {
-    "prebuild": "rimraf ./extension/dist/",
-    "start": "webpack --config webpack.config.js -w -d",
-    "build": "webpack --config webpack.production.config.js -p && web-ext build --overwrite-dest --source-dir ./extension",
+    "start": "cross-env NODE_ENV=development webpack -w",
+    "browser": "web-ext run",
+    "develop": "npm-run-all --parallel start browser",
+    "build": "npm-run-all build:*",
+    "build:compile": "webpack",
+    "build:zip": "web-ext build",
+    "build:sourcezip": "bestzip web-ext-artifacts/source.zip extension src package.json web-ext-config.js webpack.config.js",
     "test": "standard"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mathiscode/password-leak-monitor"
+    "url": "git+https://github.com/mathiscode/password-leak-monitor.git"
   },
   "keywords": [
     "password",
@@ -42,22 +26,50 @@
     "firefox",
     "chrome"
   ],
+  "author": "J.R. Mathis (https://github.com/mathiscode)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mathiscode/password-leak-monitor/issues"
   },
-  "homepage": "https://github.com/mathiscode/password-leak-monitor#README",
+  "homepage": "https://github.com/mathiscode/password-leak-monitor#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "bestzip": "^2.1.4",
+    "bootstrap": "^4.3.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.3",
+    "core-js": "^3.1.4",
+    "cross-env": "^5.2.0",
+    "css-loader": "^3.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "jquery": "^3.4.1",
+    "mini-css-extract-plugin": "^0.7.0",
+    "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
+    "popper.js": "^1.15.0",
+    "sass-loader": "^7.1.0",
+    "standard": "^12.0.1",
+    "url-loader": "^2.0.0",
+    "web-ext": "^3.0.0",
+    "webextension-polyfill": "^0.4.0",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4"
+  },
   "standard": {
     "globals": [
       "browser",
       "chrome",
-      "window"
+      "window",
+      "fetch"
     ],
     "ignore": [
       "extension/dist/",
       "node_modules/"
     ]
-  },
-  "dependencies": {
-    "toastr": "^2.1.4"
   }
 }

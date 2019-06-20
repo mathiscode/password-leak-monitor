@@ -1,0 +1,26 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
+body {
+  padding: 0 30px;
+  color: #444;
+  min-width: 400px;
+
+  hr { border-color: #444; }
+
+  h1#popup-title {
+    text-align: center;
+    font-size: 22px;
+  }
+
+  #page-compromised {
+    p {
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+
+  #content {
+    font-size: 1.5rem;
+  }
+}

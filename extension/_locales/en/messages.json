@@ -1,10 +1,21 @@
 {
-  "extName": {
+  "extensionName": {
     "message": "Password Leak Monitor",
-    "description": "Extension name"
+    "description": "The name of the extension"
   },
-  "extDesc": {
-    "message": "An addon for automatically and securely checking used passwords against known leaked passwords",
-    "description": "Extension description"
+
+  "extensionDescription": {
+    "message": "Browser extension that automatically monitors for passwords that are compromised",
+    "description": "The description of the extension"
+  },
+
+  "extensionDeveloperName": {
+    "message": "J.R. Mathis",
+    "description": "The name of the extension's developer"
+  },
+
+  "extensionDeveloperURL": {
+    "message": "https://github.com/mathiscode/password-leak-monitor",
+    "description": "The URL of the extension's developer"
   }
 }
