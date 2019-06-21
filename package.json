@@ -1,6 +1,6 @@
 {
   "name": "password-leak-monitor",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Browser extension that automatically monitors for passwords that are compromised",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack -w",
