@@ -11,9 +11,9 @@
     "build:zip": "web-ext build",
     "build:sourcezip": "bestzip web-ext-artifacts/source.zip extension src package.json web-ext-config.js webpack.config.js",
     "test": "standard && web-ext lint",
-    "version:patch": "npm version patch && node src/utils/version-sync && git commit -m \"updated manifest version (patch)\"",
-    "version:minor": "npm version minor && node src/utils/version-sync && git commit -m \"updated manifest version (minor)\"",
-    "version:major": "npm version major && node src/utils/version-sync && git commit -m \"updated manifest version (major)\""
+    "version:patch": "npm version patch && node src/utils/version-sync && git add . && git commit -m \"updated manifest version (patch)\"",
+    "version:minor": "npm version minor && node src/utils/version-sync && git add . && git commit -m \"updated manifest version (minor)\"",
+    "version:major": "npm version major && node src/utils/version-sync && git add . && git commit -m \"updated manifest version (major)\""
   },
   "repository": {
     "type": "git",
