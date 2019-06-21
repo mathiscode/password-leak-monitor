@@ -14,7 +14,7 @@ browser.storage.local.get(null).then(store => {
     let typingTimer
     const doneTypingInterval = store.options.delayAutocheckOnIdle || 1500
 
-    const doneTyping = (e) => {
+    const doneTyping = e => {
       checkPassword(e.target.value).then(found => {
         if (found) {
           if (!store.options.disableAutocheckOnIdle) {
