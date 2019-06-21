@@ -1,6 +1,6 @@
 {
   "name": "password-leak-monitor",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Browser extension that automatically monitors for passwords that are compromised",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack -w",
@@ -10,7 +10,10 @@
     "build:compile": "webpack",
     "build:zip": "web-ext build",
     "build:sourcezip": "bestzip web-ext-artifacts/source.zip extension src package.json web-ext-config.js webpack.config.js",
-    "test": "standard && web-ext lint"
+    "test": "standard && web-ext lint",
+    "version:patch": "npm version patch && node src/utils/version-sync && git add . && git commit -m \"updated manifest version (patch)\"",
+    "version:minor": "npm version minor && node src/utils/version-sync && git add . && git commit -m \"updated manifest version (minor)\"",
+    "version:major": "npm version major && node src/utils/version-sync && git add . && git commit -m \"updated manifest version (major)\""
   },
   "repository": {
     "type": "git",
