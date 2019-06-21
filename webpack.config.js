@@ -1,4 +1,3 @@
-require('webpack')
 const path = require('path')
 
 const Plugins = {
@@ -8,6 +7,7 @@ const Plugins = {
 }
 
 module.exports = {
+  node: { global: false },
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
   devtool: process.env.NODE_ENV === 'development' ? 'eval' : 'source-map',
 
