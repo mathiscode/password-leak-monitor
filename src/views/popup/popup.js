@@ -27,6 +27,7 @@ const password = document.querySelector('input[name=check-password]')
 const status = document.querySelector('#password-compromised-status')
 
 password.addEventListener('keyup', e => {
+  if (e.keyCode === 13) return
   status.innerHTML = '&nbsp;'
   status.classList.remove('text-danger', 'text-success')
   password.classList.remove('is-valid', 'is-invalid')

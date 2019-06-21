@@ -14,11 +14,14 @@ const sendNotification = (password) => {
         currentNotificationID = null
       }
 
+      let compromisedMessage = browser.i18n.getMessage('notificationPasswordCompromised')
+      compromisedMessage = compromisedMessage === '' ? 'Warning! This password has been included in data breaches.\n\nClick to see the unmasked password.' : compromisedMessage
+
       browser.notifications.create({
         type: 'basic',
         iconUrl: '../alert.png',
         title: 'Password Compromised!',
-        message: `Warning! This password has been included in data breaches.\n\nClick to see the unmasked password.`
+        message: compromisedMessage
       }).then(id => {
         passwordMap[id] = password
         currentNotificationID = id
@@ -64,11 +67,16 @@ const allClear = () => {
 
 // Show password on notification click
 browser.notifications.onClicked.addListener(id => {
+  browser.notifications.clear(id)
+
+  let compromisedMessage = browser.i18n.getMessage('notificationThisIsTheCompromisedPassword')
+  compromisedMessage = compromisedMessage === '' ? 'This is the compromised password' : compromisedMessage
+
   browser.notifications.create({
     type: 'basic',
     iconUrl: '../alert.png',
     title: 'Password Compromised!',
-    message: passwordMap[id] ? `This is the compromised password:\n\n${passwordMap[id]}` : 'Notification expired.'
+    message: passwordMap[id] ? `${compromisedMessage}:\n\n${passwordMap[id]}` : 'Notification expired.'
   })
 })
 
