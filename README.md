@@ -20,4 +20,4 @@ Your passwords are **NEVER** transmitted to any other system. This addon makes u
 
 ## How does it work?
 
-It's a fairly simple extension: for every password you enter, once the password field loses focus, a call is made to [Have I Been Pwned](https://haveibeenpwned.com/API/v2#PwnedPasswords) with the first five characters of your _hashed_ password. A list of potential matches is returned, and the extension determines if your hashed password matches any of the compromised hashes.
+It's a fairly simple extension: for every password you enter, a call is made to [Have I Been Pwned](https://haveibeenpwned.com/API/v2#PwnedPasswords) with the first five characters of your _hashed_ password. A list of potential matches is returned, and the extension determines if your hashed password matches any of the compromised hashes.
