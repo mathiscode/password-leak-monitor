@@ -28,7 +28,7 @@ const status = document.querySelector('#password-compromised-status')
 
 password.addEventListener('keyup', e => {
   if (e.keyCode === 13) return
-  status.appendChild(document.createTextNode('&nbsp;'))
+  status.innerHTML = '&nbsp;'
   status.classList.remove('text-danger', 'text-success')
   password.classList.remove('is-valid', 'is-invalid')
 })
@@ -36,7 +36,7 @@ password.addEventListener('keyup', e => {
 passwordCheckForm.addEventListener('submit', e => {
   e.preventDefault()
 
-  status.appendChild(document.createTextNode('&nbsp;'))
+  status.innerHTML = '&nbsp;'
   status.classList.remove('text-danger', 'text-success')
   password.classList.remove('is-valid', 'is-invalid')
   password.setAttribute('disabled', true)
@@ -49,12 +49,12 @@ passwordCheckForm.addEventListener('submit', e => {
       password.classList.add('is-invalid')
       status.classList.add('text-danger')
       const localeStatus = browser.i18n.getMessage('popupPagePasswordCompromised')
-      status.appendChild(document.createTextNode(localeStatus === '' ? 'Password is compromised!' : localeStatus))
+      status.innerHTML = localeStatus === '' ? 'Password is compromised!' : localeStatus
     } else {
       password.classList.add('is-valid')
       status.classList.add('text-success')
       const localeStatus = browser.i18n.getMessage('popupPagePasswordNotCompromised')
-      status.appendChild(document.createTextNode(localeStatus === '' ? 'Password is not compromised!' : localeStatus))
+      status.innerHTML = localeStatus === '' ? 'Password is not compromised!' : localeStatus
     }
 
     password.removeAttribute('disabled')
