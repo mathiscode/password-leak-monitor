@@ -10,7 +10,7 @@
     "build:compile": "webpack",
     "build:zip": "web-ext build",
     "build:sourcezip": "bestzip web-ext-artifacts/source.zip extension src package.json web-ext-config.js webpack.config.js",
-    "test": "standard"
+    "test": "standard && web-ext lint"
   },
   "repository": {
     "type": "git",
