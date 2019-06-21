@@ -4,8 +4,7 @@ const path = require('path')
 const Plugins = {
   Clean: require('clean-webpack-plugin').CleanWebpackPlugin,
   Html: require('html-webpack-plugin'),
-  CssExtract: require('mini-css-extract-plugin'),
-  Copy: require('copy-webpack-plugin')
+  CssExtract: require('mini-css-extract-plugin')
 }
 
 module.exports = {
@@ -71,10 +70,5 @@ module.exports = {
       filename: 'popup.html',
       inject: false
     })
-
-    // new Plugins.Copy([
-    //   { from: 'node_modules/bootstrap/dist/css/bootstrap.min.css', to: 'vendor/bootstrap/bootstrap.css' },
-    //   { from: 'node_modules/bootstrap/dist/js/bootstrap.min.js', to: 'vendor/bootstrap/bootstrap.js' }
-    // ])
   ]
 }
