@@ -23,7 +23,7 @@ const sendNotification = (password) => {
         if (!store.options.disableNotifications) {
           browser.notifications.create({
             type: 'basic',
-            iconUrl: '../alert.png',
+            iconUrl: '../icons/alert.png',
             title: 'Password Compromised!',
             message: compromisedMessage
           }).then(id => {
@@ -79,7 +79,7 @@ browser.notifications.onClicked.addListener(id => {
 
     browser.notifications.create({
       type: 'basic',
-      iconUrl: '../alert.png',
+      iconUrl: '../icons/alert.png',
       title: 'Password Compromised!',
       message: passwordMap[id] ? `${compromisedMessage}:\n\n${passwordMap[id]}` : 'Notification expired.'
     })
