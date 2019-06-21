@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <h1 id="popup-title" data-localize="__MSG_extensionName__"></h1>
+
+  <div id="page-compromised" class="alert alert-danger d-none">
+    <p id="page-compromised-description" data-localize="__MSG_popupPageCompromisedDescription__">
+      The password you used on this page has been detected in leaked databases.
+      <br />
+      It is highly recommended that you change it immediately!
+    </p>
+  </div>
+
+  <div id="content">
+    <hr />
+    <form id="password-check-form">
+      <div class="form-group">
+        <div class="input-group">
+          <input name="check-password" type="password" class="form-control" placeholder="Enter password to check manually" aria-describedby="password-compromised-status" autofocus required>
+          <div class="input-group-append">
+            <button class="btn btn-primary">
+              <span id="password-check-form-submit-text" data-localize="__MSG_popupPageCheckButton__">Check</span>
+              <div id="password-check-form-loading" class="spinner-border spinner-border-sm d-none"></div>
+            </button>
+          </div>
+        </div>
+
+        <small id="password-compromised-status" class="form-text">&nbsp;</small>
+      </div>
+    </form>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,28 +1,26 @@
-const webpack = require('webpack')
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+const Plugins = {
+  Clean: require('clean-webpack-plugin').CleanWebpackPlugin,
+  Html: require('html-webpack-plugin'),
+  CssExtract: require('mini-css-extract-plugin')
+}
 
 module.exports = {
+  node: { global: false },
+  mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
+  devtool: process.env.NODE_ENV === 'development' ? 'eval' : 'source-map',
+
   entry: {
-    options: path.resolve(__dirname, 'src/app/options.js'),
-    popup: path.resolve(__dirname, 'src/app/popup.js'),
-    main: path.resolve(__dirname, 'src/app/main.js'),
-    background: path.resolve(__dirname, 'src/app/background.js')
+    background: path.resolve(__dirname, 'src/background.js'),
+    content: path.resolve(__dirname, 'src/content.js'),
+    popup: path.resolve(__dirname, 'src/views/popup/popup.js'),
+    options: path.resolve(__dirname, 'src/views/options/options.js')
   },
 
   output: {
     path: path.resolve(__dirname, 'extension/dist'),
     filename: '[name].js'
-  },
-
-  resolve: {
-    extensions: [ '.js', '.json', '.scss', '.css' ],
-    alias: {
-      utils: path.resolve(__dirname, 'src/app/utils'),
-      images: path.resolve(__dirname, 'src/images'),
-      styles: path.resolve(__dirname, 'src/styles')
-    }
   },
 
   module: {
@@ -37,13 +35,12 @@ module.exports = {
         loaders: [ 'html-loader' ]
       },
       {
-        test: /\.(scss|css)$/,
-        use: ExtractTextPlugin.extract(
-          {
-            fallback: 'style-loader',
-            use: [ 'css-loader', 'sass-loader' ]
-          }
-        )
+        test: /\.(css|scss)$/,
+        use: [
+          Plugins.CssExtract.loader,
+          'css-loader',
+          'sass-loader'
+        ]
       },
       {
         test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
@@ -56,32 +53,22 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
+    new Plugins.Clean(),
+
+    new Plugins.CssExtract({
+      filename: '[name].css'
     }),
 
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/views/options.html'),
+    new Plugins.Html({
+      template: path.resolve(__dirname, 'src/views/options/options.html'),
       filename: 'options.html',
-      chunks: ['options'],
-      inject: true,
-      minify: {}
+      inject: false
     }),
 
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/views/popup.html'),
+    new Plugins.Html({
+      template: path.resolve(__dirname, 'src/views/popup/popup.html'),
       filename: 'popup.html',
-      chunks: ['popup'],
-      inject: true,
-      minify: {}
-    }),
-
-    new ExtractTextPlugin('[name].css'),
-
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.NamedModulesPlugin()
-  ],
-
-  devtool: 'eval-cheap-module-source-map'
+      inject: false
+    })
+  ]
 }

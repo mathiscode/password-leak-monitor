@@ -1,4 +1,3 @@
 node_modules/
-yarn.lock
 extension/dist/
 web-ext-artifacts/
