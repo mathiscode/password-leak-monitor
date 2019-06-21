@@ -13,7 +13,7 @@ browser.storage.local.get().then(store => {
 
   const loadOptions = {
     disableNotifications: el => { el.checked = store.options.disableNotifications || false },
-    disableAutocheckOnBlur: el => { el.checked = store.options.disableAutocheckOnBlur || false },
+    // disableAutocheckOnBlur: el => { el.checked = store.options.disableAutocheckOnBlur || false },
     disableAutocheckOnIdle: el => { el.checked = store.options.disableAutocheckOnIdle || false },
     delayAutocheckOnIdle: el => { el.value = store.options.delayAutocheckOnIdle || 1500 }
   }
@@ -31,7 +31,7 @@ document.querySelector('#options-form').addEventListener('submit', e => {
 
   const options = {
     disableNotifications: form.querySelector('[name=disableNotifications]').checked,
-    disableAutocheckOnBlur: form.querySelector('[name=disableAutocheckOnBlur').checked,
+    // disableAutocheckOnBlur: form.querySelector('[name=disableAutocheckOnBlur').checked,
     disableAutocheckOnIdle: form.querySelector('[name=disableAutocheckOnIdle]').checked,
     delayAutocheckOnIdle: form.querySelector('[name=delayAutocheckOnIdle]').value
   }

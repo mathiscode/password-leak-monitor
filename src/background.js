@@ -14,31 +14,37 @@ const sendNotification = (password) => {
         currentNotificationID = null
       }
 
-      let compromisedMessage = browser.i18n.getMessage('notificationPasswordCompromised')
-      compromisedMessage = compromisedMessage === '' ? 'Warning! This password has been included in data breaches.\n\nClick to see the unmasked password.' : compromisedMessage
+      browser.storage.local.get().then(store => {
+        store.options = store.options || {}
 
-      browser.notifications.create({
-        type: 'basic',
-        iconUrl: '../alert.png',
-        title: 'Password Compromised!',
-        message: compromisedMessage
-      }).then(id => {
-        passwordMap[id] = password
-        currentNotificationID = id
-      })
+        let compromisedMessage = browser.i18n.getMessage('notificationPasswordCompromised')
+        compromisedMessage = compromisedMessage === '' ? 'Warning! This password has been included in data breaches.\n\nClick to see the unmasked password.' : compromisedMessage
 
-      browser.browserAction.setBadgeText({
-        text: '!',
-        tabId: tabs[0].id
-      })
+        if (!store.options.disableNotifications) {
+          browser.notifications.create({
+            type: 'basic',
+            iconUrl: '../alert.png',
+            title: 'Password Compromised!',
+            message: compromisedMessage
+          }).then(id => {
+            passwordMap[id] = password
+            currentNotificationID = id
+          })
+        }
 
-      browser.browserAction.setBadgeBackgroundColor({
-        color: 'red'
-      })
+        browser.browserAction.setBadgeText({
+          text: '!',
+          tabId: tabs[0].id
+        })
 
-      browser.browserAction.setTitle({
-        title: 'Password Compromised!',
-        tabId: tabs[0].id
+        browser.browserAction.setBadgeBackgroundColor({
+          color: 'red'
+        })
+
+        browser.browserAction.setTitle({
+          title: 'Password Compromised!',
+          tabId: tabs[0].id
+        })
       })
     })
 }
@@ -67,16 +73,16 @@ const allClear = () => {
 
 // Show password on notification click
 browser.notifications.onClicked.addListener(id => {
-  browser.notifications.clear(id)
+  browser.notifications.clear(id).then((cleared) => {
+    let compromisedMessage = browser.i18n.getMessage('notificationThisIsTheCompromisedPassword')
+    compromisedMessage = compromisedMessage === '' ? 'This is the compromised password' : compromisedMessage
 
-  let compromisedMessage = browser.i18n.getMessage('notificationThisIsTheCompromisedPassword')
-  compromisedMessage = compromisedMessage === '' ? 'This is the compromised password' : compromisedMessage
-
-  browser.notifications.create({
-    type: 'basic',
-    iconUrl: '../alert.png',
-    title: 'Password Compromised!',
-    message: passwordMap[id] ? `${compromisedMessage}:\n\n${passwordMap[id]}` : 'Notification expired.'
+    browser.notifications.create({
+      type: 'basic',
+      iconUrl: '../alert.png',
+      title: 'Password Compromised!',
+      message: passwordMap[id] ? `${compromisedMessage}:\n\n${passwordMap[id]}` : 'Notification expired.'
+    })
   })
 })
 
@@ -116,5 +122,5 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
 
 // Handle changes to options
 browser.storage.onChanged.addListener(changes => {
-  console.log(changes.options.newValue.dummyOption)
+  console.log(changes.options.newValue)
 })

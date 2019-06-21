@@ -10,28 +10,24 @@ console.log('[password-leak-monitor] password fields found:', passwordFields.len
 browser.storage.local.get(null).then(store => {
   store.options = store.options || {}
 
+  let compromisedMessage = browser.i18n.getMessage('passwordFieldTitlePasswordCompromised')
+  compromisedMessage = compromisedMessage === '' ? 'Password has been detected in data breaches!' : compromisedMessage
+
   passwordFields.forEach(field => {
     let typingTimer
     const doneTypingInterval = store.options.delayAutocheckOnIdle || 1500
 
-    const doneTyping = e => {
+    const doneTyping = (e, trigger) => {
       checkPassword(e.target.value).then(found => {
-        if (found) {
-          if (!store.options.disableAutocheckOnIdle) {
-            e.target.style.backgroundColor = '#c00'
-            e.target.setAttribute('title', 'Password has been detected in data breaches!')
-          }
+        isCompromised = found
 
-          if (!store.options.disableNotifications) browser.runtime.sendMessage({ type: 'password-alert', password: e.target.value })
-          isCompromised = true
-        } else {
-          if (!store.options.disableAutocheckOnIdle) {
-            e.target.style.backgroundColor = ''
-            e.target.removeAttribute('title')
-          }
-
-          if (!store.options.disableNotifications) browser.runtime.sendMessage({ type: 'all-clear' })
-          isCompromised = false
+        if (
+          (trigger === 'idle' && !store.options.disableAutocheckOnIdle) ||
+          (trigger === 'blur' && !store.options.disableAutocheckOnBlur)
+        ) {
+          e.target.style.backgroundColor = found ? '#c00' : ''
+          found ? e.target.setAttribute('title', compromisedMessage) : e.target.removeAttribute('title')
+          browser.runtime.sendMessage(found ? { type: 'password-alert', password: e.target.value } : { type: 'all-clear' })
         }
       })
     }
@@ -39,14 +35,15 @@ browser.storage.local.get(null).then(store => {
     field.addEventListener('keyup', e => {
       clearTimeout(typingTimer)
       if (field.value.length >= 4) { // TODO: Add option for minimum amount of characters before autocheckonidle
-        typingTimer = setTimeout(() => doneTyping(e), doneTypingInterval)
+        typingTimer = setTimeout(() => doneTyping(e, 'idle'), doneTypingInterval)
       }
     })
 
-    field.addEventListener('blur', e => {
-      clearTimeout(typingTimer)
-      if (!store.options.disableAutocheckOnBlur) doneTyping(e)
-    })
+    // A lot of issues with blur, removing until fixed
+    // field.addEventListener('blur', e => {
+    //   clearTimeout(typingTimer)
+    //   if (!store.options.disableAutocheckOnBlur) doneTyping(e, 'blur')
+    // })
   })
 })
 
