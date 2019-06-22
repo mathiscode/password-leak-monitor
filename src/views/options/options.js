@@ -1,11 +1,11 @@
 import browser from 'webextension-polyfill'
 
-import { LocalizeHtml } from '../../utils/i18n'
+import { localizeHtml, getLocalizedString } from '../../utils/i18n'
 import 'bootstrap/dist/js/bootstrap.js'
 import './options.scss'
 
 // Localize the options page
-LocalizeHtml()
+localizeHtml()
 
 // Display the options with currently saved values
 browser.storage.local.get().then(store => {
@@ -36,19 +36,22 @@ document.querySelector('#options-form').addEventListener('submit', e => {
     delayAutocheckOnIdle: form.querySelector('[name=delayAutocheckOnIdle]').value
   }
 
+  const saveButton = form.querySelector('button')
+  const saveStatus = document.createElement('h3')
+  saveStatus.style.marginTop = '20px'
+
   browser.storage.local.set({ options })
     .then(() => {
-      console.log('Options updated')
       browser.storage.local.get(null).then(store => {
-        const saveButton = form.querySelector('button')
-        const saveStatus = document.createElement('h3')
-        saveStatus.style.marginTop = '20px'
         saveStatus.classList.add('alert', 'alert-success')
-        saveStatus.appendChild(document.createTextNode('Options saved!'))
+        saveStatus.appendChild(document.createTextNode(getLocalizedString('optionsSaved', 'Options saved!')))
         saveButton.parentNode.insertBefore(saveStatus, saveButton.nextSibling)
       })
     })
     .catch(err => {
       console.error(err)
+      saveStatus.classList.add('alert', 'alert-danger')
+      saveStatus.appendChild(document.createTextNode(getLocalizedString('optionsSaveError', 'There was an error saving the options')))
+      saveButton.parentNode.insertBefore(saveStatus, saveButton.nextSibling)
     })
 })

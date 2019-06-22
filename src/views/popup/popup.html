@@ -7,12 +7,12 @@
   <link rel="stylesheet" href="popup.css" />
 </head>
 <body>
-  <h1 id="popup-title" data-localize="__MSG_extensionName__"></h1>
+  <h1 id="popup-title" data-localize="__MSG_extensionName__">Password Leak Monitor</h1>
 
   <div id="page-compromised" class="alert alert-danger d-none">
-    <p id="page-compromised-description" data-localize="__MSG_popupPageCompromisedDescription__">
+    <p id="page-compromised-description" data-localize="__MSG_popupCompromisedDescription__">
       The password you used on this page has been detected in leaked databases.
-      <br />
+      <br>
       It is highly recommended that you change it immediately!
     </p>
   </div>
@@ -25,7 +25,7 @@
           <input name="check-password" type="password" class="form-control" placeholder="Enter password to check manually" aria-describedby="password-compromised-status" autofocus required>
           <div class="input-group-append">
             <button class="btn btn-primary">
-              <span id="password-check-form-submit-text" data-localize="__MSG_popupPageCheckButton__">Check</span>
+              <span id="password-check-form-submit-text" data-localize="__MSG_popupManualCheckButton__">Check</span>
               <div id="password-check-form-loading" class="spinner-border spinner-border-sm d-none"></div>
             </button>
           </div>

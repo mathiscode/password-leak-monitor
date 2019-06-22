@@ -7,46 +7,44 @@
   <link rel="stylesheet" href="options.css" />
 </head>
 <body>
-  <h1 data-localize="__MSG_extensionName__"></h1>
+  <h1 data-localize="__MSG_extensionName__">Password Leak Monitor</h1>
   <hr />
   <form id="options-form">
     <fieldset>
-      <legend data-localize="__MSG_extensionOptionsLegend__">Extension Options</legend>
-
       <div class="form-group row">
-        <label for="disableNotifications" class="col-sm-2 col-form-label" data-localize="__MSG_extensionOptionsDisableNotifications">Disable Notifications</label>
+        <label for="disableNotifications" class="col-sm-2 col-form-label" data-localize="__MSG_optionsDisableNotifications__">Disable Notifications</label>
         <div class="col-sm-10">
-          <input name="disableNotifications" type="checkbox" class="form-check-input">
-          <small class="form-text text-muted" data-localize="__MSG_extensionOptionsDisableNotificationsHelp">This will completely disable notifications, except the toolbar badge</small>
+          <input id="disableNotifications" name="disableNotifications" type="checkbox" class="form-check-input">
+          <small class="form-text text-muted" data-localize="__MSG_optionsDisableNotificationsHelp__">This will completely disable notifications, except the toolbar badge</small>
         </div>
       </div>
 
       <!-- <div class="form-group row">
-        <label for="disableAutocheckOnBlur" class="col-sm-2 col-form-label" data-localize="__MSG_extensionOptionsDisableAutocheckOnBlur">Disable Autocheck on Blur</label>
+        <label for="disableAutocheckOnBlur" class="col-sm-2 col-form-label" data-localize="__MSG_optionsDisableAutocheckOnBlur__">Disable Autocheck on Blur</label>
         <div class="col-sm-10">
-          <input name="disableAutocheckOnBlur" type="checkbox" class="form-check-input">
-          <small class="form-text text-muted" data-localize="__MSG_extensionOptionsDisableAutocheckOnBlurHelp">This will prevent the extension from checking your password after you leave the input field</small>
+          <input id="disableAutocheckOnBlur" name="disableAutocheckOnBlur" type="checkbox" class="form-check-input">
+          <small class="form-text text-muted" data-localize="__MSG_optionsDisableAutocheckOnBlurHelp__">This will prevent the extension from checking your password after you leave the input field</small>
         </div>
       </div> -->
 
       <div class="form-group row">
-        <label for="disableAutocheckOnIdle" class="col-sm-2 col-form-label" data-localize="__MSG_extensionOptionsDisableAutocheckOnIdle">Disable Autocheck on Idle</label>
+        <label for="disableAutocheckOnIdle" class="col-sm-2 col-form-label" data-localize="__MSG_optionsDisableAutocheckOnIdle__">Disable Autocheck on Idle</label>
         <div class="col-sm-10">
-          <input name="disableAutocheckOnIdle" type="checkbox" class="form-check-input">
-          <small class="form-text text-muted" data-localize="__MSG_extensionOptionsDisableAutocheckOnIdleHelp">This will prevent the extension from checking your password after you stop typing</small>
+          <input id="disableAutocheckOnIdle" name="disableAutocheckOnIdle" type="checkbox" class="form-check-input">
+          <small class="form-text text-muted" data-localize="__MSG_optionsDisableAutocheckOnIdleHelp__">This will prevent the extension from checking your password after you stop typing</small>
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="delayAutocheckOnIdle" class="col-sm-2 col-form-label" data-localize="__MSG_extensionOptionsDelayAutocheckOnIdle">Autocheck on Idle Delay</label>
+        <label for="delayAutocheckOnIdle" class="col-sm-2 col-form-label" data-localize="__MSG_optionsDelayAutocheckOnIdle__">Autocheck on Idle Delay</label>
         <div class="col-sm-10">
-          <input name="delayAutocheckOnIdle" type="number" min="500">
-          <small class="form-text text-muted" data-localize="__MSG_extensionOptionsDelayAutocheckOnIdleHelp">Number of milliseconds to wait before autochecking after you stop typing</small>
+          <input id="delayAutocheckOnIdle" name="delayAutocheckOnIdle" type="number" min="500">
+          <small class="form-text text-muted" data-localize="__MSG_optionsDelayAutocheckOnIdleHelp__">Number of milliseconds to wait before autochecking after you stop typing</small>
         </div>
       </div>
     </fieldset>
     <br />
-    <button class="btn btn-primary btn-lg btn-block">Save</button>
+    <button class="btn btn-primary btn-lg btn-block" data-localize="__MSG_optionsSaveButton__">Save</button>
   </form>
 
   <script src="options.js"></script>

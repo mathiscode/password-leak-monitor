@@ -1,0 +1,71 @@
+{
+  "extensionDescription": {
+      "message": "Browsererweiterung, die automatisch nach gefährdeten Kennwörtern sucht"
+  },
+  "contextMenuOptionsTitle": {
+      "message": "Optionen"
+  },
+  "toolbarIconPasswordCompromisedTitle": {
+      "message": "Passwort kompromittiert!"
+  },
+  "notificationPasswordCompromisedTitle": {
+      "message": "Passwort kompromittiert!"
+  },
+  "notificationThisIsTheCompromisedPassword": {
+      "message": "Dies ist das kompromittierte Passwort:"
+  },
+  "notificationPasswordCompromisedText": {
+      "message": "Warnung! Dieses Passwort wurde in Datenschutzverletzungen aufgenommen. Klicken Sie hier, um das nicht maskierte Kennwort anzuzeigen."
+  },
+  "notificationExpired": {
+      "message": "Benachrichtigung abgelaufen"
+  },
+  "popupCompromisedDescription": {
+      "message": "Das auf dieser Seite verwendete Passwort wurde in durchgesickerten Datenbanken gefunden. <br> Es wird dringend empfohlen, es sofort zu ändern!"
+  },
+  "popupManualPasswordCheckInputPlaceholder": {
+      "message": "Geben Sie das Passwort ein, um es manuell zu überprüfen"
+  },
+  "popupManualPasswordCompromised": {
+      "message": "Passwort ist kompromittiert!"
+  },
+  "popupManualPasswordNotCompromised": {
+      "message": "Passwort ist nicht kompromittiert!"
+  },
+  "popupManualCheckButton": {
+      "message": "Prüfen"
+  },
+  "optionsDisableNotifications": {
+      "message": "Benachrichtigungen ausschalten"
+  },
+  "optionsDisableNotificationsHelp": {
+      "message": "Dadurch werden Benachrichtigungen mit Ausnahme des Symbolleisten-Badges vollständig deaktiviert"
+  },
+  "optionsDisableAutocheckOnBlur": {
+      "message": "Deaktivieren Sie die automatische Prüfung auf Unschärfe"
+  },
+  "optionsDisableAutocheckOnBlurHelp": {
+      "message": "Dadurch wird verhindert, dass die Erweiterung Ihr Passwort überprüft, nachdem Sie das Eingabefeld verlassen haben"
+  },
+  "optionsDisableAutocheckOnIdle": {
+      "message": "Deaktivieren Sie die automatische Überprüfung im Leerlauf"
+  },
+  "optionsDisableAutocheckOnIdleHelp": {
+      "message": "Dadurch wird verhindert, dass die Erweiterung Ihr Kennwort überprüft, nachdem Sie die Eingabe beendet haben"
+  },
+  "optionsDelayAutocheckOnIdle": {
+      "message": "Autocheck auf Leerlaufverzögerung"
+  },
+  "optionsDelayAutocheckOnIdleHelp": {
+      "message": "Anzahl der Millisekunden, die vor der automatischen Überprüfung gewartet werden soll, nachdem Sie die Eingabe beendet haben"
+  },
+  "optionsSaveButton": {
+      "message": "Optionen speichern"
+  },
+  "optionsSaved": {
+      "message": "Optionen gespeichert!"
+  },
+  "optionsSaveError": {
+      "message": "Beim Speichern der Optionen ist ein Fehler aufgetreten"
+  }
+}

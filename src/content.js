@@ -1,6 +1,7 @@
 import browser from 'webextension-polyfill'
 
 import checkPassword from './utils/password-check'
+import { getLocalizedString } from './utils/i18n'
 
 let isCompromised = false
 
@@ -9,9 +10,6 @@ console.log('[password-leak-monitor] password fields found:', passwordFields.len
 
 browser.storage.local.get(null).then(store => {
   store.options = store.options || {}
-
-  let compromisedMessage = browser.i18n.getMessage('passwordFieldTitlePasswordCompromised')
-  compromisedMessage = compromisedMessage === '' ? 'Password has been detected in data breaches!' : compromisedMessage
 
   passwordFields.forEach(field => {
     let typingTimer
@@ -26,7 +24,7 @@ browser.storage.local.get(null).then(store => {
           (trigger === 'blur' && !store.options.disableAutocheckOnBlur)
         ) {
           e.target.style.backgroundColor = found ? '#c00' : ''
-          found ? e.target.setAttribute('title', compromisedMessage) : e.target.removeAttribute('title')
+          found ? e.target.setAttribute('title', getLocalizedString('passwordFieldTitlePasswordCompromised', 'Password has been detected in data breaches!')) : e.target.removeAttribute('title')
           browser.runtime.sendMessage(found ? { type: 'password-alert', password: e.target.value } : { type: 'all-clear' })
         }
       })

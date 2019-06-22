@@ -1,18 +1,19 @@
 import browser from 'webextension-polyfill'
 
-import { LocalizeHtml } from '../../utils/i18n'
+import { localizeHtml, getLocalizedString } from '../../utils/i18n'
 import checkPassword from '../../utils/password-check'
 import 'bootstrap/dist/js/bootstrap.js'
 import './popup.scss'
 
 // Localize the popup page
-LocalizeHtml()
+localizeHtml()
 
 browser.tabs.query({ active: true, currentWindow: true }).then(tabs => {
   if (tabs.length > 0) {
     const port = browser.tabs.connect(tabs[0].id)
     port.postMessage({ action: 'is-compromised' })
     port.onMessage.addListener(msg => {
+      console.log(msg)
       switch (msg.action) {
         case 'is-compromised':
           const classes = document.querySelector('#page-compromised').classList
@@ -25,6 +26,8 @@ browser.tabs.query({ active: true, currentWindow: true }).then(tabs => {
 const passwordCheckForm = document.querySelector('#password-check-form')
 const password = document.querySelector('input[name=check-password]')
 const status = document.querySelector('#password-compromised-status')
+
+password.setAttribute('placeholder', getLocalizedString('popupManualPasswordCheckInputPlaceholder', 'Enter password to check manually'))
 
 password.addEventListener('keyup', e => {
   if (e.keyCode === 13) return
@@ -48,13 +51,11 @@ passwordCheckForm.addEventListener('submit', e => {
     if (found) {
       password.classList.add('is-invalid')
       status.classList.add('text-danger')
-      const localeStatus = browser.i18n.getMessage('popupPagePasswordCompromised')
-      status.innerHTML = localeStatus === '' ? 'Password is compromised!' : localeStatus
+      status.innerHTML = getLocalizedString('popupManualPasswordCompromised', 'Password is compromised!')
     } else {
       password.classList.add('is-valid')
       status.classList.add('text-success')
-      const localeStatus = browser.i18n.getMessage('popupPagePasswordNotCompromised')
-      status.innerHTML = localeStatus === '' ? 'Password is not compromised!' : localeStatus
+      status.innerHTML = getLocalizedString('popupManualPasswordNotCompromised', 'Password is not compromised!')
     }
 
     password.removeAttribute('disabled')

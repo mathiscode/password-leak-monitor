@@ -17,5 +17,115 @@
   "extensionDeveloperURL": {
     "message": "https://github.com/mathiscode/password-leak-monitor",
     "description": "The URL of the extension's developer"
+  },
+
+  "contextMenuOptionsTitle": {
+    "message": "Options",
+    "description": "The name of 'Options' in the context menu"
+  },
+
+  "toolbarIconPasswordCompromisedTitle": {
+    "message": "Password Compromised!",
+    "description": "The title of the toolbar icon when a compromised password is detected"
+  },
+
+  "notificationPasswordCompromisedTitle": {
+    "message": "Password Compromised!",
+    "description": "The title of the notification"
+  },
+
+  "notificationThisIsTheCompromisedPassword": {
+    "message": "This is the compromised password:",
+    "description": "The text in the notification that displays the unmasked password"
+  },
+
+  "notificationPasswordCompromisedText": {
+    "message": "Warning! This password has been included in data breaches.\n\nClick to see the unmasked password.",
+    "description": "The text of the notification"
+  },
+
+  "notificationExpired": {
+    "message": "Notification expired",
+    "description": "The text shown when the notification is clicked after expiry"
+  },
+
+  "popupCompromisedDescription": {
+    "message": "The password you used on this page has been detected in leaked databases.<br>It is highly recommended that you change it immediately!",
+    "description": "Content of the compromised password alert in the popup"
+  },
+
+  "popupManualPasswordCheckInputPlaceholder": {
+    "message": "Enter password to check manually",
+    "description": "The placeholder text in the manual input field"
+  },
+
+  "popupManualPasswordCompromised": {
+    "message": "Password is compromised!",
+    "description": "The text displayed when a manually checked password is compromised"
+  },
+
+  "popupManualPasswordNotCompromised": {
+    "message": "Password is not compromised!",
+    "description": "The text displayed when a manually checked password is NOT compromised"
+  },
+
+  "popupManualCheckButton": {
+    "message": "Check",
+    "description": "The text of the manual check button"
+  },
+
+  "optionsDisableNotifications": {
+    "message": "Disable Notifications",
+    "description": "Title for disableNotifications"
+  },
+
+  "optionsDisableNotificationsHelp": {
+    "message": "This will completely disable notifications, except the toolbar badge",
+    "description": "Help text for disableNotifications"
+  },
+
+  "optionsDisableAutocheckOnBlur": {
+    "message": "Disable Autocheck on Blur",
+    "description": "Title for disableAutocheckOnBlur"
+  },
+
+  "optionsDisableAutocheckOnBlurHelp": {
+    "message": "This will prevent the extension from checking your password after you leave the input field",
+    "description": "Help text for disableAutocheckOnBlur"
+  },
+
+  "optionsDisableAutocheckOnIdle": {
+    "message": "Disable Autocheck on Idle",
+    "description": "Title for disableAutocheckOnIdle"
+  },
+
+  "optionsDisableAutocheckOnIdleHelp": {
+    "message": "This will prevent the extension from checking your password after you stop typing",
+    "description": "Help text for disableAutocheckOnIdle"
+  },
+
+  "optionsDelayAutocheckOnIdle": {
+    "message": "Autocheck on Idle Delay",
+    "description": "Title for delayAutocheckOnIdle"
+  },
+
+  "optionsDelayAutocheckOnIdleHelp": {
+    "message": "Number of milliseconds to wait before autochecking after you stop typing",
+    "description": "Help text for delayAutocheckOnIdle"
+  },
+
+  "optionsSaveButton": {
+    "message": "Save Options",
+    "description": "The text displayed on the options save button"
+  },
+
+  "optionsSaved": {
+    "message": "Options saved!",
+    "description": "The text displayed when options were saved"
+  },
+
+  "optionsSaveError": {
+    "message": "There was an error saving the options",
+    "description": "The text displayed when an error occurred saving options"
   }
 }

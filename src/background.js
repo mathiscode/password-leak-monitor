@@ -1,15 +1,16 @@
 import browser from 'webextension-polyfill'
 
-let currentNotificationID = null
-let passwordMap = {}
+import { getLocalizedString } from './utils/i18n'
 
-// For security, clear the password map frequently so unauthorized users can't click the notification later to see it (on Chrome/Win10 for example)
-setInterval(() => { passwordMap = {} }, 15000)
+let currentNotificationID
+let clearPasswordMapInterval
+let passwordMap = {}
+const clearPasswordMap = () => { passwordMap = {} }
 
 const sendNotification = (password) => {
   browser.tabs.query({ active: true, currentWindow: true })
     .then(tabs => {
-      if (currentNotificationID !== null) {
+      if (currentNotificationID) {
         browser.notifications.clear(currentNotificationID)
         currentNotificationID = null
       }
@@ -17,16 +18,17 @@ const sendNotification = (password) => {
       browser.storage.local.get().then(store => {
         store.options = store.options || {}
 
-        let compromisedMessage = browser.i18n.getMessage('notificationPasswordCompromised')
-        compromisedMessage = compromisedMessage === '' ? 'Warning! This password has been included in data breaches.\n\nClick to see the unmasked password.' : compromisedMessage
-
         if (!store.options.disableNotifications) {
           browser.notifications.create({
             type: 'basic',
             iconUrl: '../icons/alert.png',
-            title: 'Password Compromised!',
-            message: compromisedMessage
+            title: getLocalizedString('notificationPasswordCompromisedTitle', 'Password Compromised!'),
+            message: getLocalizedString('notificationPasswordCompromisedText', 'Warning! This password has been included in data breaches.\n\nClick to see the unmasked password.')
           }).then(id => {
+            // For security, clear the password map frequently so unauthorized users can't click the notification later to see it (on Chrome/Win10 for example)
+            clearInterval(clearPasswordMapInterval)
+            clearPasswordMapInterval = setInterval(clearPasswordMap, 15000)
+
             passwordMap[id] = password
             currentNotificationID = id
           })
@@ -42,7 +44,7 @@ const sendNotification = (password) => {
         })
 
         browser.browserAction.setTitle({
-          title: 'Password Compromised!',
+          title: getLocalizedString('toolbarIconPasswordCompromisedTitle', 'Password Compromised!'),
           tabId: tabs[0].id
         })
       })
@@ -54,7 +56,7 @@ const allClear = () => {
 
   browser.tabs.query({ active: true, currentWindow: true })
     .then(tabs => {
-      if (currentNotificationID !== null) {
+      if (currentNotificationID) {
         browser.notifications.clear(currentNotificationID)
         currentNotificationID = null
       }
@@ -74,14 +76,13 @@ const allClear = () => {
 // Show password on notification click
 browser.notifications.onClicked.addListener(id => {
   browser.notifications.clear(id).then((cleared) => {
-    let compromisedMessage = browser.i18n.getMessage('notificationThisIsTheCompromisedPassword')
-    compromisedMessage = compromisedMessage === '' ? 'This is the compromised password' : compromisedMessage
-
     browser.notifications.create({
       type: 'basic',
       iconUrl: '../icons/alert.png',
-      title: 'Password Compromised!',
-      message: passwordMap[id] ? `${compromisedMessage}:\n\n${passwordMap[id]}` : 'Notification expired.'
+      title: getLocalizedString('notificationPasswordCompromisedTitle', 'Password Compromised!'),
+      message: passwordMap[id]
+        ? `${getLocalizedString('notificationThisIsTheCompromisedPassword', 'This is the compromised password:')}\n\n${passwordMap[id]}`
+        : getLocalizedString('notificationExpired', 'Notification expired')
     })
   })
 })
@@ -100,14 +101,14 @@ browser.runtime.onMessage.addListener(msg => {
 // Setup context menus
 browser.contextMenus.create({
   id: 'root-menu',
-  title: browser.i18n.getMessage('extensionName'),
+  title: getLocalizedString('extensionName'),
   contexts: ['all']
 })
 
 browser.contextMenus.create({
   id: 'options',
   parentId: 'root-menu',
-  title: 'Options',
+  title: getLocalizedString('contextMenuOptionsTitle', 'Options'),
   contexts: ['all']
 })
 
