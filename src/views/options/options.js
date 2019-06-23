@@ -46,6 +46,7 @@ document.querySelector('#options-form').addEventListener('submit', e => {
         saveStatus.classList.add('alert', 'alert-success')
         saveStatus.appendChild(document.createTextNode(getLocalizedString('optionsSaved', 'Options saved!')))
         saveButton.parentNode.insertBefore(saveStatus, saveButton.nextSibling)
+        setTimeout(() => saveStatus.parentNode.removeChild(saveStatus), 4000)
       })
     })
     .catch(err => {
