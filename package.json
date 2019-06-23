@@ -75,6 +75,7 @@
       "window",
       "fetch"
     ],
+
     "ignore": [
       "extension/dist/",
       "node_modules/"
