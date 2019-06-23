@@ -2,6 +2,19 @@
   "name": "password-leak-monitor",
   "version": "2.1.4",
   "description": "Browser extension that automatically monitors for passwords that are compromised",
+  "author": "J.R. Mathis (https://github.com/mathiscode)",
+  "homepage": "https://github.com/mathiscode/password-leak-monitor#readme",
+  "license": "MIT",
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathiscode/password-leak-monitor.git"
+  },
+  
+  "bugs": {
+    "url": "https://github.com/mathiscode/password-leak-monitor/issues"
+  },
+
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack -w",
     "browser": "web-ext run",
@@ -15,10 +28,7 @@
     "version:minor": "npm version minor && node src/utils/version-sync && git add . && git commit -m \"updated manifest version (minor)\"",
     "version:major": "npm version major && node src/utils/version-sync && git add . && git commit -m \"updated manifest version (major)\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mathiscode/password-leak-monitor.git"
-  },
+
   "keywords": [
     "password",
     "leak",
@@ -29,12 +39,7 @@
     "firefox",
     "chrome"
   ],
-  "author": "J.R. Mathis (https://github.com/mathiscode)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mathiscode/password-leak-monitor/issues"
-  },
-  "homepage": "https://github.com/mathiscode/password-leak-monitor#readme",
+
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
@@ -62,6 +67,7 @@
     "webpack": "^4.34.0",
     "webpack-cli": "^3.3.4"
   },
+
   "standard": {
     "globals": [
       "browser",
