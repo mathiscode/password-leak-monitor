@@ -10,6 +10,8 @@
 
 [Download for Firefox](https://addons.mozilla.org/en-US/firefox/addon/password-leak-monitor)
 
+Also check out the [password-leak](https://github.com/mathiscode/password-leak) JavaScript library!
+
 ---
 
 A browser addon that automatically monitors all passwords used and alerts you if it has been included in any data breaches.
