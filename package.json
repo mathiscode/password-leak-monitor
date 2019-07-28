@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack -w",
-    "browser": "web-ext run",
+    "browser": "web-ext run --firefox=firefoxdeveloperedition --firefox-profile=super-dev --keep-profile-changes",
     "develop": "npm-run-all --parallel start browser",
     "build": "npm-run-all build:*",
     "build:compile": "webpack",

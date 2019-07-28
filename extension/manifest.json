@@ -35,7 +35,14 @@
     "browser_style": true,
     "default_icon": "icons/icon.png",
     "default_title": "__MSG_extensionName__",
-    "default_popup": "dist/popup.html"
+    "default_popup": "dist/popup.html",
+    "theme_icons": [
+      {
+        "light": "icons/icon-dark.png",
+        "dark": "icons/icon.png",
+        "size": 16
+      }
+    ]
   },
   "options_ui": {
     "browser_style": true,
