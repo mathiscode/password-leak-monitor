@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD001 -->
 # Password Leak Monitor
 
 [![Build Status](https://travis-ci.org/mathiscode/password-leak-monitor.svg?branch=master)](https://travis-ci.org/mathiscode/password-leak-monitor)
@@ -8,13 +9,13 @@
 [![Beerpay](https://beerpay.io/mathiscode/password-leak-monitor/badge.svg?style=beer-square)](https://beerpay.io/mathiscode/password-leak-monitor)  [![Beerpay](https://beerpay.io/mathiscode/password-leak-monitor/make-wish.svg?style=flat-square)](https://beerpay.io/mathiscode/password-leak-monitor?focus=wish)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Make%20sure%20your%20passwords%20are%20safe&url=https://github.com/mathiscode/password-leak-monitor#readme&hashtags=firefox,chrome,passwords,security)
 
-## [Download for Firefox](https://addons.mozilla.org/en-US/firefox/addon/password-leak-monitor)
+A browser addon that automatically monitors all passwords used and alerts you if it has been included in any data breaches.
+
+### [Download for Firefox](https://addons.mozilla.org/en-US/firefox/addon/password-leak-monitor)
 
 Also check out the [password-leak](https://github.com/mathiscode/password-leak) JavaScript library!
 
 ---
-
-A browser addon that automatically monitors all passwords used and alerts you if it has been included in any data breaches.
 
 ## How is this safe?
 
