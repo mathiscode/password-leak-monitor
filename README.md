@@ -1,11 +1,16 @@
 <!-- markdownlint-disable MD001 -->
 # Password Leak Monitor
 
+[![Sponsor](https://img.shields.io/badge/Sponsor-my%20work-success)](https://github.com/sponsors/mathiscode)
+
 [![Mozilla Add-on](https://img.shields.io/amo/v/password-leak-monitor.svg)](https://addons.mozilla.org/en-US/firefox/addon/password-leak-monitor)
 [![Mozilla Add-on](https://img.shields.io/amo/users/password-leak-monitor.svg)](https://addons.mozilla.org/en-US/firefox/addon/password-leak-monitor)
 [![Mozilla Add-on](https://img.shields.io/amo/dw/password-leak-monitor.svg)](https://addons.mozilla.org/en-US/firefox/addon/password-leak-monitor)
 [![Mozilla Add-on](https://img.shields.io/amo/stars/password-leak-monitor)](https://addons.mozilla.org/en-US/firefox/addon/password-leak-monitor)
+
+<!--
 [![Beerpay](https://beerpay.io/mathiscode/password-leak-monitor/badge.svg?style=beer-square)](https://beerpay.io/mathiscode/password-leak-monitor)  [![Beerpay](https://beerpay.io/mathiscode/password-leak-monitor/make-wish.svg?style=flat-square)](https://beerpay.io/mathiscode/password-leak-monitor?focus=wish)
+-->
 
 [![Build Status](https://travis-ci.org/mathiscode/password-leak-monitor.svg?branch=master)](https://travis-ci.org/mathiscode/password-leak-monitor)
 [![GitHub license](https://img.shields.io/github/license/mathiscode/password-leak-monitor.svg?color=blue)](https://github.com/mathiscode/password-leak-monitor/blob/master/LICENSE)
