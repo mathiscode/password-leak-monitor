@@ -3,5 +3,6 @@ cache: yarn
 before_install:
   - npm install -g yarn
 script:
+  - yarn
   - yarn build:compile
   - yarn test
