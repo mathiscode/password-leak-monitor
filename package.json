@@ -1,6 +1,6 @@
 {
   "name": "password-leak-monitor",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "Browser extension that automatically monitors for passwords that are compromised",
   "author": "J.R. Mathis (https://github.com/mathiscode)",
   "homepage": "https://github.com/mathiscode/password-leak-monitor#readme",
