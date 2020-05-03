@@ -3,7 +3,8 @@ const path = require('path')
 const Plugins = {
   Clean: require('clean-webpack-plugin').CleanWebpackPlugin,
   Html: require('html-webpack-plugin'),
-  CssExtract: require('mini-css-extract-plugin')
+  CssExtract: require('mini-css-extract-plugin'),
+  PnpWebpackPlugin: require('pnp-webpack-plugin')
 }
 
 module.exports = {
@@ -70,5 +71,17 @@ module.exports = {
       filename: 'popup.html',
       inject: false
     })
-  ]
+  ],
+
+  resolve: {
+    plugins: [
+      Plugins.PnpWebpackPlugin
+    ]
+  },
+
+  resolveLoader: {
+    plugins: [
+      Plugins.PnpWebpackPlugin.moduleLoader(module)
+    ]
+  }
 }
