@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD001 MD026 -->
 # Password Leak Monitor
 
 [![Sponsor](https://img.shields.io/badge/Sponsor-my%20work-success)](https://github.com/sponsors/mathiscode)
