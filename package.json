@@ -53,7 +53,7 @@
     "html-webpack-plugin": "^3.2.0",
     "jquery": "^3.5.0",
     "mini-css-extract-plugin": "^0.7.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "npm-run-all": "^4.1.5",
     "pnp-webpack-plugin": "^1.6.4",
     "popper.js": "^1.15.0",
